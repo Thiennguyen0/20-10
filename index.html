@@ -105,6 +105,35 @@
     opacity: 0;
   }
 
+  /* Heart */
+  .heart {
+    position: absolute;
+    bottom: -50px;
+    width: 20px;
+    height: 20px;
+    background-color: #ffb6c1;
+    transform: rotate(45deg);
+    animation: floatUp 4s infinite ease-in;
+    opacity: 0.7;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #ffb6c1;
+    border-radius: 50%;
+  }
+
+  .heart::before { top: -10px; left: 0; }
+  .heart::after { left: -10px; top: 0; }
+  @keyframes floatUp {
+    0% { transform: translateY(0) rotate(45deg); opacity: 0.7; }
+    100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+  }
+
   @keyframes pulse {
     0%, 100% { opacity: 0.6; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.05); }
@@ -112,11 +141,21 @@
 </style>
 </head>
 <body>
+  <script>
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDelay = Math.random() * 5 + 's';
+      heart.style.width = heart.style.height = (Math.random() * 15 + 10) + 'px';
+      document.body.appendChild(heart);
+    }
+  </script>
   <div class="envelope" onclick="openEnvelope()">
     <div class="flap"></div>
     <div class="letter">
-      <h2>💖 Chúc mừng Ngày Phụ nữ Việt Nam 20/10💖</h2>
-      <p>Chúc các bạn luôn luôn xinh đẹp, hạnh phúc và tỏa sáng như đóa hoa rạng rỡ mỗi ngày!</p>
+      <h2>💖Chúc mừng Ngày Phụ nữ Việt Nam 20/10💖</h2>
+      <p>Tập thể nam 11CT3 xin chúc các bạn luôn luôn hạnh phúc, xinh đẹp và tỏa sáng như đóa hoa rạng rỡ mỗi ngày nhee!</p>
     </div>
     <div class="base"></div>
   </div>
